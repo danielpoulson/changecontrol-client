@@ -15,8 +15,8 @@ const renderApp = () => {
 };
 renderApp();
 
-if (module.hot) {
-  module.hot.accept('./Routes', () => {
-    renderApp();
-  });
-}
+// if (module.hot) {
+//   module.hot.accept('./Routes', () => {
+//     renderApp();
+//   });
+// }

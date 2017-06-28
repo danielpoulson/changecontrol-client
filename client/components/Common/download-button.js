@@ -1,4 +1,5 @@
 import React from 'react';
+import { baseURL } from '../../utils/helpers';
 
 export default class DownloadButton extends React.Component {
   constructor(props) {
@@ -6,7 +7,7 @@ export default class DownloadButton extends React.Component {
     this.onDownload = this.onDownload.bind(this);
   }
   onDownload() {
-    window.location.href = `/api/files/upload/${this.props.fileLoad}`;
+    window.location.href = `${baseURL}/api/files/upload/${this.props.fileLoad}`;
 
     if (this.props.exportFiles === 'hidden') {
       this.props.removeFile(this.props.fileId);

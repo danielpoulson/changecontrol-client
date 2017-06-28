@@ -89,7 +89,7 @@ export function resetUser() {
 export function logoutUser() {
   return (dispatch: Function) => {
     axios
-      .get('/logout')
+      .get(`${api}/logout`)
       .then(() => {
         dispatch(resetUser());
       })

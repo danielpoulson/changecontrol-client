@@ -2,6 +2,7 @@
   "scripts": {
     "api": "node ratingsAPI.js",
     "build": "webpack",
+    "build:Prod": "webpack -p",
     "dev": "webpack-dev-server",
     "format": "prettier --write --single-quote --print-width=120 --parser=flow --tab-width=2 \"js/**/*.{js,jsx}\"",
     "lint": "eslint **/*.{js,jsx} --quiet",
@@ -11,9 +12,7 @@
     "watch": "webpack --watch"
   },
   "jest": {
-    "snapshotSerializers": [
-      "jest-serializer-enzyme"
-    ]
+    "snapshotSerializers": ["jest-serializer-enzyme"]
   },
   "dependencies": {
     "axios": "^0.16.2",

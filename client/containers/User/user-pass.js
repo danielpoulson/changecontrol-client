@@ -37,6 +37,7 @@ class UserPass extends Component {
 
       toastr.success('Yeah Baby... You password has been changed', 'User Account', { timeOut: 1000 });
       this.props.savePass(this.props.id, passwords.password);
+      this.props.history.push('/');
     } else {
       toastr.error('Nooooooo... These passwords did not match ... please try again.', 'User Account', {
         timeOut: 2000
@@ -47,7 +48,8 @@ class UserPass extends Component {
     id: string,
     savePass: {
       id: string
-    }
+    },
+    history: any
   };
 
   render() {
@@ -93,9 +95,7 @@ class UserPass extends Component {
           </div>
 
           <div className="col-sm-9 col-md-offset-3">
-            <Link to="/home">
-              <button type="submit" className="btn btn-success pull-left" onClick={this.onSave}>Save</button>
-            </Link>
+            <button type="submit" className="btn btn-success pull-left" onClick={this.onSave}>Save</button>
             <Link to="/home">
               <button className="btn btn-info dp-margin-10-LR">Cancel</button>
             </Link>

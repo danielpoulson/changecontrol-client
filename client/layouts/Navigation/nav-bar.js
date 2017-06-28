@@ -44,7 +44,8 @@ class NavBar extends React.Component {
   props: {
     username: string,
     getFiles: any,
-    logoutUser: any
+    logoutUser: any,
+    role: string
   };
 
   render() {
@@ -72,6 +73,14 @@ class NavBar extends React.Component {
                   <i className="fa fa-sign-out fa-fw" />&nbsp; Logout ({this.props.username})
                 </Link>
               </li>
+              <li>
+                {this.props.role === 'admin'
+                  ? <Link to="/user">
+                      <i className="fa fa-sign-out fa-fw" />&nbsp; User Management
+                    </Link>
+                  : ''}
+
+              </li>
             </ul>
           </div>
         </nav>
@@ -80,4 +89,7 @@ class NavBar extends React.Component {
   }
 }
 
-export default connect(state => ({ username: state.main.user.username }), { getFiles, logoutUser })(NavBar);
+const mapStateToProps = state => ({ username: state.main.user.username, role: state.main.user.role });
+const mapDispatchToProps = { getFiles, logoutUser };
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

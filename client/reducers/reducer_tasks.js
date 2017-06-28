@@ -127,7 +127,7 @@ export default function(state = initialState, action) {
     case LOAD_PAGE_TASKS: {
       const column = action.data.column || state.sorted;
       perPage = action.data.numPage || 15;
-      page = action.data.page_num || 1;
+      page = action.data.pageNum || 1;
       searchText = action.data.search;
       const searcheddata = searchData(state.alldata, searchText, column, initialState.columns);
       paged = pagedList(searcheddata, page);

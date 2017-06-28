@@ -152,7 +152,7 @@ class Changes extends Component {
           <div className="col-sm-6">
             <Pagination
               activePage={this.state.activePage}
-              numPage={this.props.changes.per_page}
+              numPage={this.props.changes.perPage}
               count={this.props.changes.total}
               getPage={this.linkClick}
             />
