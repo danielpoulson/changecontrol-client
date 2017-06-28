@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`addLogin 1`] = `
+Object {
+  "payload": Object {
+    "success": true,
+    "user": Object {
+      "email": "danielpoulson@icloud.com",
+      "fullname": "Daniel Poulson",
+      "id": "588d97a89be9b78bb608692b",
+      "role": "admin",
+      "username": "danielp",
+    },
+  },
+  "type": "SET_USER",
+}
+`;
+
+exports[`resetUser  1`] = `
+Object {
+  "type": "USER_LOGGED_OUT",
+}
+`;
+
+exports[`setReturnedUser 1`] = `
+Object {
+  "payload": Object {
+    "success": true,
+    "user": Object {
+      "email": "danielpoulson@icloud.com",
+      "fullname": "Daniel Poulson",
+      "id": "588d97a89be9b78bb608692b",
+      "role": "admin",
+      "username": "danielp",
+    },
+  },
+  "type": "SET_USER",
+}
+`;
