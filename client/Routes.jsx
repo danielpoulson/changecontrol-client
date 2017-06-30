@@ -10,16 +10,13 @@ import App from './containers/App';
 import Home from './containers/Home/home';
 import Changes from './containers/Changes';
 import ChangeDetail from './containers/ChangeDetail';
+import PrivateRoute from './routes/PrivateRoute';
 import TaskDetail from './containers/Tasks/task-details';
 import Tasks from './containers/Tasks/tasks';
 import User from './containers/User/user-profile';
 import UserPass from './containers/User/user-pass';
 import Export from './components/Files/file-export';
 import Footer from './layouts/Footer';
-
-export function requireAuth() {
-  return sessionStorage.getItem('authorised');
-}
 
 const FourOhFour = () => <h1>404</h1>;
 
@@ -31,7 +28,7 @@ const Routes = () =>
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/changes" component={Changes} />
-          <Route path="/change/:id" component={ChangeDetail} />
+          <PrivateRoute path="/change/:id" component={ChangeDetail} />
           <Route path="/task/:id" component={TaskDetail} />
           <Route path="/tasks" component={Tasks} />
           <Route path="/user" component={User} />
