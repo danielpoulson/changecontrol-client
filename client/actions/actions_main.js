@@ -8,6 +8,7 @@ export const USER_LOGGED_OUT = 'USER_LOGGED_OUT';
 export const SET_FILETAB_COUNT = 'SET_FILETAB_COUNT';
 export const SET_LOADING = 'SET_LOADING';
 export const SET_USER_DASHBOARD = 'SET_USER_DASHBOARD';
+export const SET_USER_FROM_SESSION_STATE = 'SET_USER_FROM_SESSION_STATE';
 
 export function addUserDashboard(dashboard: any) {
   return { type: SET_USER_DASHBOARD, payload: dashboard };
@@ -44,6 +45,10 @@ export function setLoading(data) {
 
 export function setTitle(data) {
   return { type: 'SET_TITLE', data };
+}
+
+export function setUserFromSessionState() {
+  return { type: SET_USER_FROM_SESSION_STATE };
 }
 
 export function setReturnedUser(request: Object) {

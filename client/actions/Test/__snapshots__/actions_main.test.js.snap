@@ -51,3 +51,9 @@ Object {
   "type": "SET_USER",
 }
 `;
+
+exports[`setUserFromSessionState 1`] = `
+Object {
+  "type": "SET_USER_FROM_SESSION_STATE",
+}
+`;

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { getAllTasks } from '../../actions/actions_tasks';
-import { setUser } from '../../actions/actions_main';
+import { setUserFromSessionState } from '../../actions/actions_main';
 import { getUsers } from '../../actions/actions_users';
 import { getChanges } from '../../actions/actions_changes';
 
@@ -19,7 +19,7 @@ class App extends Component {
     this.props.getChanges(4);
     this.props.getUsers();
     if (authorised === 'true') {
-      this.props.setUser();
+      this.props.setUserFromSessionState();
     }
   }
 
@@ -27,7 +27,7 @@ class App extends Component {
     getAllTasks: any,
     getChanges: any,
     getUsers: any,
-    setUser: any
+    setUserFromSessionState: Function
   };
 
   render() {
@@ -35,4 +35,4 @@ class App extends Component {
   }
 }
 
-export default connect(null, { getAllTasks, setUser, getUsers, getChanges })(App);
+export default connect(null, { getAllTasks, setUserFromSessionState, getUsers, getChanges })(App);

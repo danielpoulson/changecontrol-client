@@ -17,37 +17,32 @@ import UserPass from './containers/User/user-pass';
 import Export from './components/Files/file-export';
 import Footer from './layouts/Footer';
 
-function requireAuth(nextState, replace) {
-  const authorised = sessionStorage.getItem('authorised');
-
-  if (authorised === 'false' || !authorised) {
-    replace({ pathname: '/', state: { nextPathname: nextState.location.pathname } });
-  }
+export function requireAuth() {
+  return sessionStorage.getItem('authorised');
 }
 
 const FourOhFour = () => <h1>404</h1>;
 
-const Routes = () => (
+const Routes = () =>
   <BrowserRouter>
     <Provider store={store}>
       <div className="container">
         <App />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/changes" component={Changes} onEnter={requireAuth} />
-          <Route path="/change/:id" component={ChangeDetail} onEnter={requireAuth} />
-          <Route path="/task/:id" component={TaskDetail} onEnter={requireAuth} />
-          <Route path="/tasks" component={Tasks} onEnter={requireAuth} />
-          <Route path="/user" component={User} onEnter={requireAuth} />
-          <Route path="/user_pass" component={UserPass} onEnter={requireAuth} />
-          <Route path="/export" component={Export} onEnter={requireAuth} />
+          <Route path="/changes" component={Changes} />
+          <Route path="/change/:id" component={ChangeDetail} />
+          <Route path="/task/:id" component={TaskDetail} />
+          <Route path="/tasks" component={Tasks} />
+          <Route path="/user" component={User} />
+          <Route path="/user_pass" component={UserPass} />
+          <Route path="/export" component={Export} />
           <Redirect from="/home" to="/" />
           <Route component={FourOhFour} />
         </Switch>
         <Footer />
       </div>
     </Provider>
-  </BrowserRouter>
-);
+  </BrowserRouter>;
 
 export default Routes;

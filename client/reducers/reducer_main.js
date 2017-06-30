@@ -7,7 +7,8 @@ import {
   USER_LOGGED_OUT,
   SET_FILETAB_COUNT,
   SET_LOADING,
-  SET_USER_DASHBOARD
+  SET_USER_DASHBOARD,
+  SET_USER_FROM_SESSION_STATE
 } from '../actions/actions_main';
 
 const initialState = {
@@ -39,13 +40,17 @@ export default function(state = initialState, action) {
       };
 
     case SET_USER: {
-      let _user = {};
+      let user = {};
 
       if (action.payload.success) {
-        _user = action.payload.user;
+        user = action.payload.user;
+
+        user.authState = true;
         sessionStorage.setItem('authorised', true);
-        sessionStorage.setItem('username', action.payload.user.username);
-        sessionStorage.setItem('id', action.payload.user.id);
+        sessionStorage.setItem('role', user.role);
+        sessionStorage.setItem('username', user.username);
+        sessionStorage.setItem('fullname', user.fullname);
+        sessionStorage.setItem('id', user.id);
       } else {
         toastr.error('Your username / password combination was incorrect!', 'Authentication Failed', {
           timeOut: 2000,
@@ -55,11 +60,27 @@ export default function(state = initialState, action) {
 
       return {
         ...state,
-        user: _user
+        user
+      };
+    }
+
+    case SET_USER_FROM_SESSION_STATE: {
+      const user = {};
+
+      user.authState = sessionStorage.getItem('authorised');
+      user.username = sessionStorage.getItem('username');
+      user.fullname = sessionStorage.getItem('fullname');
+      user.role = sessionStorage.getItem('role');
+      user.id = sessionStorage.getItem('id');
+
+      return {
+        ...state,
+        user
       };
     }
 
     case USER_LOGGED_OUT:
+      sessionStorage.clear();
       return {
         ...state,
         user: initialState.user

@@ -1,6 +1,6 @@
 import moxios from 'moxios';
 import { baseURL } from '../../utils/helpers';
-import { addLogin, login, resetUser, setReturnedUser } from '../actions_main';
+import { addLogin, login, resetUser, setReturnedUser, setUserFromSessionState } from '../actions_main';
 import { getUsers, setUsers } from '../actions_users';
 
 const _user = {
@@ -22,6 +22,10 @@ const users = [
   'Paige Finnegan',
   'Patrick Madden'
 ];
+
+test('setUserFromSessionState', () => {
+  expect(setUserFromSessionState()).toMatchSnapshot();
+});
 
 test('resetUser ', () => {
   expect(resetUser()).toMatchSnapshot();
