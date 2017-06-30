@@ -1,11 +1,8 @@
 import React from 'react';
 import FormInput from '../../components/Common/form-text-input';
 import TextArea from '../../components/Common/text-area';
-import DateTimePicker from '../../components/Common/date-picker';
 import SelectInput from '../../components/Common/select-input';
-
-// import momentLocalizer from 'react-widgets/lib/localizers/moment';
-// momentLocalizer(Moment);
+import DatePicker from '../../components/Common/new-date-picker';
 
 type Props = {
   change: any,
@@ -16,7 +13,7 @@ type Props = {
   errors: any
 };
 
-const ChangeForm = ({ errors, change, status, users, onDateChange, onChange }: Props) => (
+const ChangeForm = ({ errors, change, status, users, onDateChange, onChange }: Props) =>
   <form className="form form-horizontal">
     <FormInput
       name="CC_Descpt"
@@ -85,22 +82,22 @@ const ChangeForm = ({ errors, change, status, users, onDateChange, onChange }: P
       error={errors.CC_Comp}
     />
 
-    <DateTimePicker
+    <DatePicker
       name="CC_TDate"
+      inputdiv="col-sm-2"
       label="Target Date"
       labelstyle="col-sm-2 control-label"
-      inputdiv="col-sm-2"
-      value={change.CC_TDate}
+      selectedDay={change.CC_TDate}
       onChange={onDateChange.bind(null, 'CC_TDate')} // eslint-disable-line react/jsx-no-bind
       error={errors.CC_TDate}
     />
 
-    <DateTimePicker
+    <DatePicker
       name="CC_CDate"
-      label="Complete Date"
-      labelstyle="col-sm-2 control-label"
       inputdiv="col-sm-2"
-      value={change.CC_CDate}
+      label="Date Completed"
+      labelstyle="col-sm-2 control-label"
+      selectedDay={change.CC_CDate}
       onChange={onDateChange.bind(null, 'CC_CDate')} // eslint-disable-line react/jsx-no-bind
       error={errors.CC_CDate}
     />
@@ -159,7 +156,6 @@ const ChangeForm = ({ errors, change, status, users, onDateChange, onChange }: P
       labelstyle="col-sm-2 control-label"
       inputdiv="col-sm-10"
     />
-  </form>
-);
+  </form>;
 
 export default ChangeForm;

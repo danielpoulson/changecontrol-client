@@ -1,5 +1,6 @@
 //SYNC VER.002 DP
 import axios from 'axios';
+import { baseURL } from '../utils/helpers';
 
 export const GET_TASKS = 'GET_TASKS';
 export const GET_TASK = 'GET_TASK';
@@ -11,11 +12,11 @@ export const GET_PROJECT_TASKS = 'GET_PROJECT_TASKS';
 export const GET_ALL_TASKS = 'GET_ALL_TASKS';
 export const SET_CAPA = 'SET_CAPA';
 
-const api = 'http://localhost:6005';
-
 export function getTasks(data) {
-  const url = `${api}/api/tasks/${data}`;
-  const request = axios.get(url);
+  const url = `${baseURL}/api/tasks/${data}`;
+  const request = axios.get(url).catch(error => {
+    console.error('axios error', error); // eslint-disable-line no-console
+  });
 
   return {
     type: GET_TASKS,
@@ -26,8 +27,10 @@ export function getTasks(data) {
 export function getAllTasks() {
   const _status = 4;
   const _capa = 0;
-  const url = `${api}/api/tasks/all/${_status}/${_capa}`;
-  const request = axios.get(url);
+  const url = `${baseURL}/api/tasks/all/${_status}/${_capa}`;
+  const request = axios.get(url).catch(error => {
+    console.error('axios error', error); // eslint-disable-line no-console
+  });
 
   return {
     type: GET_TASKS,
@@ -36,8 +39,10 @@ export function getAllTasks() {
 }
 
 export function getProjectTasks(data) {
-  const url = `${api}/api/tasks/project/${data}`;
-  const request = axios.get(url);
+  const url = `${baseURL}/api/tasks/project/${data}`;
+  const request = axios.get(url).catch(error => {
+    console.error('axios error', error); // eslint-disable-line no-console
+  });
 
   return {
     type: GET_PROJECT_TASKS,
@@ -49,8 +54,10 @@ export function getTask(data) {
   let request = {};
 
   if (data !== 'new') {
-    const url = `${api}/api/tasks/${data}`;
-    request = axios.get(url);
+    const url = `${baseURL}/api/tasks/${data}`;
+    request = axios.get(url).catch(error => {
+      console.error('axios error', error); // eslint-disable-line no-console
+    });
   }
 
   return {
@@ -60,8 +67,10 @@ export function getTask(data) {
 }
 
 export function addTask(data) {
-  const url = `${api}/api/tasks`;
-  const request = axios.post(url, data);
+  const url = `${baseURL}/api/tasks`;
+  const request = axios.post(url, data).catch(error => {
+    console.error('axios error', error); // eslint-disable-line no-console
+  });
 
   return {
     type: ADD_TASK,
@@ -70,8 +79,10 @@ export function addTask(data) {
 }
 
 export function editTask(data) {
-  const url = `${api}/api/tasks/${data._id}`;
-  axios.put(url, data);
+  const url = `${baseURL}/api/tasks/${data._id}`;
+  axios.put(url, data).catch(error => {
+    console.error('axios error', error); // eslint-disable-line no-console
+  });
 
   return {
     type: EDIT_TASK,
@@ -80,8 +91,10 @@ export function editTask(data) {
 }
 
 export function deleteTask(data) {
-  const url = `${api}/api/tasks/${data}`;
-  axios.delete(url);
+  const url = `${baseURL}/api/tasks/${data}`;
+  axios.delete(url).catch(error => {
+    console.error('axios error', error); // eslint-disable-line no-console
+  });
 
   return {
     type: DELETE_TASK,
@@ -97,8 +110,10 @@ export function loadPageTask(data) {
 }
 
 export function exportTasks(search) {
-  const url = `${api}/api/tasks/export`;
-  const request = axios.post(url, search);
+  const url = `${baseURL}/api/tasks/export`;
+  const request = axios.post(url, search).catch(error => {
+    console.error('axios error', error); // eslint-disable-line no-console
+  });
 
   return {
     type: 'ADD_EXPORTFILE',

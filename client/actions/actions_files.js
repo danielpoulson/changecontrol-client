@@ -1,5 +1,6 @@
 //SYNC 11/03/2017 DP
 import axios from 'axios';
+import { baseURL } from '../utils/helpers';
 
 export const GET_FILES = 'GET_FILES';
 export const ADD_FILE = 'ADD_FILE';
@@ -7,10 +8,8 @@ export const BOOKOUT_FILE = 'BOOKOUT_FILE';
 export const DELETE_FILE = 'DELETE_FILE';
 export const REMOVE_FILE = 'REMOVE_FILE';
 
-const api = 'http://localhost:6005';
-
 export function getFiles(data) {
-  const url = `${api}/api/files/${data}`;
+  const url = `${baseURL}/api/files/${data}`;
   const request = axios.get(url);
 
   return {
@@ -27,7 +26,7 @@ export function addFile(data) {
 }
 
 export function deleteFile(id) {
-  const url = `${api}/api/files/delete/${id}`;
+  const url = `${baseURL}/api/files/delete/${id}`;
   axios.delete(url);
 
   return {
@@ -44,7 +43,7 @@ export function removeFile(id) {
 }
 //
 export function bookoutFile(id, user) {
-  const url = `${api}/api/files/booked/${id}`;
+  const url = `${baseURL}/api/files/booked/${id}`;
   axios.put(url, { user });
 
   return {

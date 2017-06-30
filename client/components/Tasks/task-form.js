@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import TextArea from '../../components/Common/text-area';
 import TextInputTask from '../../components/Common/form-text-input';
-import DateTimePicker from '../../components/Common/date-picker';
+import DatePicker from '../../components/Common/new-date-picker';
 import SelectInput from '../../components/Common/select-input';
 
 type Props = {
@@ -31,7 +31,7 @@ const TaskForm = ({
   onDateChange,
   onCancel,
   submitting
-}: Props) => (
+}: Props) =>
   <form className="form form-horizontal">
     <TextInputTask
       name="TKName"
@@ -44,23 +44,23 @@ const TaskForm = ({
       error={errors.TKName}
     />
 
-    <DateTimePicker
+    <DatePicker
       name="TKStart"
+      inputdiv="col-sm-2"
       label="Start date"
       labelstyle="col-sm-2 control-label"
-      inputdiv="col-sm-2"
-      value={task.TKStart}
-      onChange={onDateChange.bind(null, 'TKStart')}
+      selectedDay={task.TKStart}
+      onChange={onDateChange.bind(null, 'TKStart')} // eslint-disable-line react/jsx-no-bind
       error={errors.TKStart}
     />
 
-    <DateTimePicker
+    <DatePicker
       name="TKTarg"
       label="Target date"
-      labelstyle="col-sm-2 control-label"
       inputdiv="col-sm-2"
-      value={task.TKTarg}
-      onChange={onDateChange.bind(null, 'TKTarg')}
+      labelstyle="col-sm-2 control-label"
+      selectedDay={task.TKTarg}
+      onChange={onDateChange.bind(null, 'TKTarg')} // eslint-disable-line react/jsx-no-bind
       error={errors.TKTarg}
     />
 
@@ -111,7 +111,6 @@ const TaskForm = ({
         </button>
       </Link>
     </div>
-  </form>
-);
+  </form>;
 
 export default TaskForm;

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { baseURL } from '../utils/helpers';
 
 export const SET_CHANGE_STATE = 'SET_CHANGE_STATE';
 export const SET_MAIN = 'SET_MAIN';
@@ -8,8 +9,6 @@ export const SET_FILETAB_COUNT = 'SET_FILETAB_COUNT';
 export const SET_LOADING = 'SET_LOADING';
 export const SET_USER_DASHBOARD = 'SET_USER_DASHBOARD';
 
-const api = 'http://localhost:6005';
-
 export function addUserDashboard(dashboard: any) {
   return { type: SET_USER_DASHBOARD, payload: dashboard };
 }
@@ -17,7 +16,7 @@ export function addUserDashboard(dashboard: any) {
 export function getUserDashboard(username) {
   return (dispatch: Function) => {
     axios
-      .get(`${api}/api/changes/userdashboard/${username}`)
+      .get(`${baseURL}/api/changes/userdashboard/${username}`)
       .then(response => {
         dispatch(addUserDashboard(response.data));
       })
@@ -54,7 +53,7 @@ export function setReturnedUser(request: Object) {
 export function setUser() {
   return (dispatch: Function) => {
     axios
-      .get(`${api}/api/users/logged`)
+      .get(`${baseURL}/api/users/logged`)
       .then(response => {
         dispatch(setReturnedUser(response.data));
       })
@@ -69,7 +68,7 @@ export function addLogin(user: any) {
 }
 
 export function login(username) {
-  const url = `${api}/login`;
+  const url = `${baseURL}/login`;
   return (dispatch: Function) => {
     axios
       .post(url, username)
@@ -89,7 +88,7 @@ export function resetUser() {
 export function logoutUser() {
   return (dispatch: Function) => {
     axios
-      .get(`${api}/logout`)
+      .get(`${baseURL}/logout`)
       .then(() => {
         dispatch(resetUser());
       })
