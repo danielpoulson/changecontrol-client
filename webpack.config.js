@@ -2,6 +2,7 @@
 const { resolve } = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 module.exports = () => {
   return {
@@ -28,13 +29,13 @@ module.exports = () => {
     },
     stats: {
       colors: true,
-      reasons: true,
-      chunks: true
+      errors: true
     },
     plugins: [
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NamedModulesPlugin(),
-      new ExtractTextPlugin('styles.css')
+      new ExtractTextPlugin('styles.css'),
+      new ProgressBarPlugin()
     ],
     module: {
       rules: [

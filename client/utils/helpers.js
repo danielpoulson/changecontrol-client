@@ -1,3 +1,4 @@
 export const fileRegex = /C{2}\d{6}\s[-]\s/;
-// export const baseURL = 'http://192.168.1.15:6005';
-export const baseURL = 'http://localhost:6005';
+// export const serverURL = 'http://au01a112:6005';
+// export const serverURL = 'http://192.168.1.7:6005';
+export const serverURL = 'http://localhost:6005';

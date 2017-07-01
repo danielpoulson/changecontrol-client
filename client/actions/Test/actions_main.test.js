@@ -1,5 +1,5 @@
 import moxios from 'moxios';
-import { baseURL } from '../../utils/helpers';
+import { serverURL } from '../../utils/helpers';
 import { addLogin, login, resetUser, setReturnedUser, setUserFromSessionState } from '../actions_main';
 import { getUsers, setUsers } from '../actions_users';
 
@@ -52,7 +52,7 @@ test('login', (done: Function) => {
           response: _user
         })
         .then(() => {
-          expect(request.url).toEqual(`${baseURL}/login`);
+          expect(request.url).toEqual(`${serverURL}/login`);
           expect(dispatchMock).toBeCalledWith(addLogin(_user));
           done();
         });
@@ -76,7 +76,7 @@ test('getUsers', (done: Function) => {
           response: users
         })
         .then(() => {
-          expect(request.url).toEqual(`${baseURL}/api/users/all`);
+          expect(request.url).toEqual(`${serverURL}/api/users/all`);
           expect(dispatchMock).toBeCalledWith(setUsers(users));
           done();
         });

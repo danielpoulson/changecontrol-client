@@ -1,6 +1,8 @@
 const { resolve } = require('path');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 // const GLOBALS = {
 //   'process.env.NODE_ENV': JSON.stringify('production')
@@ -13,20 +15,23 @@ module.exports = () => {
     devtool: 'cheap-eval-source-map',
     output: {
       path: resolve('dist'),
-      filename: 'bundle.js'
+      filename: '[name].[hash].js',
+      publicPath: '/dist/'
     },
     resolve: {
       extensions: ['.js', '.jsx', '.json']
     },
     stats: {
       colors: true,
-      reasons: true,
-      chunks: true
+      errors: true
     },
     plugins: [
-      new webpack.HotModuleReplacementPlugin(),
-      new webpack.NamedModulesPlugin(),
-      new ExtractTextPlugin('styles.css')
+      new HtmlWebpackPlugin({
+        title: 'NPI - ChangeControl',
+        template: 'index.pug'
+      }),
+      new ProgressBarPlugin(),
+      new ExtractTextPlugin('styles.[hash].css')
     ],
     module: {
       rules: [

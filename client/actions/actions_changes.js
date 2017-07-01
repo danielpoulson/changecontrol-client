@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { baseURL } from '../utils/helpers';
+import { serverURL } from '../utils/helpers';
 
 export const GET_CHANGES = 'GET_CHANGES';
 export const GET_CHANGE = 'GET_CHANGE';
@@ -10,7 +10,7 @@ export const CREATE_LOG = 'CREATE_LOG';
 export const BOOKOUT_FILE = 'BOOKOUT_FILE';
 
 export function getChanges(data) {
-  const url = `${baseURL}/api/changes/all/${data}`;
+  const url = `${serverURL}/api/changes/all/${data}`;
   const request = axios.get(url).catch(error => {
     console.error('axios error', error); // eslint-disable-line no-console
   });
@@ -22,7 +22,7 @@ export function getChanges(data) {
 }
 
 export function getChange(data) {
-  const url = `${baseURL}/api/changes/${data}`;
+  const url = `${serverURL}/api/changes/${data}`;
   let request = {};
 
   if (data !== 'new') {
@@ -38,7 +38,7 @@ export function getChange(data) {
 }
 
 export function addChange(data) {
-  const url = `${baseURL}/api/changes`;
+  const url = `${serverURL}/api/changes`;
   const request = axios.post(url, data).catch(error => {
     console.error('axios error', error); // eslint-disable-line no-console
   });
@@ -50,7 +50,7 @@ export function addChange(data) {
 }
 
 export function editChange(data) {
-  const url = `${baseURL}/api/changes/${data._id}`;
+  const url = `${serverURL}/api/changes/${data._id}`;
   axios.put(url, data).catch(error => {
     console.error('axios error', error); // eslint-disable-line no-console
   });
@@ -64,7 +64,7 @@ export function editChange(data) {
 // TODO: Delete change from cached list of changes
 
 export function closeChange(data) {
-  const url = `${baseURL}/api/changes/${data._id}`;
+  const url = `${serverURL}/api/changes/${data._id}`;
   axios.put(url, data).catch(error => {
     console.error('axios error', error); // eslint-disable-line no-console
   });
@@ -83,7 +83,7 @@ export function loadPage(data) {
 }
 
 export function createLog(data) {
-  const url = `${baseURL}/api/changes/changelog/${data.CC_No}`;
+  const url = `${serverURL}/api/changes/changelog/${data.CC_No}`;
   axios.put(url, data).catch(error => {
     console.error('axios error', error); // eslint-disable-line no-console
   });
@@ -95,7 +95,7 @@ export function createLog(data) {
 }
 
 export function bookoutFile(data) {
-  const url = `${baseURL}/api/filebooked/${data._id}`;
+  const url = `${serverURL}/api/filebooked/${data._id}`;
   axios.put(url).catch(error => {
     console.error('axios error', error); // eslint-disable-line no-console
   });
@@ -107,7 +107,7 @@ export function bookoutFile(data) {
 }
 
 export function exportChanges(search: string) {
-  const url = `${baseURL}/api/changes/export`;
+  const url = `${serverURL}/api/changes/export`;
   const request = axios.post(url, search).catch(error => {
     console.error('axios error', error); // eslint-disable-line no-console
   });
