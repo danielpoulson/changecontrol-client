@@ -1,4 +1,5 @@
-import { GET_USERS, USER_CREATED } from '../actions/actions_users';
+import { GET_USERS, USER_CREATED, DELETED_USER } from '../actions/actions_users';
+import { removeByName } from '../utils/data-functions';
 
 export default function(state = [], action) {
   switch (action.type) {
@@ -6,7 +7,10 @@ export default function(state = [], action) {
       return action.payload;
 
     case USER_CREATED:
-      return [...state, action.fullname];
+      return [...state, ...action.fullname];
+
+    case DELETED_USER:
+      return removeByName(state, action.fullname);
 
     default:
       return state;

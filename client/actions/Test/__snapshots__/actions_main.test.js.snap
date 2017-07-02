@@ -16,20 +16,6 @@ Object {
 }
 `;
 
-exports[`addLogin 2`] = `
-Object {
-  "payload": Array [
-    "Daniel Poulson",
-    "George Saville",
-    "Keith Quiney",
-    "Matthew Johnston",
-    "Paige Finnegan",
-    "Patrick Madden",
-  ],
-  "type": "GET_USERS",
-}
-`;
-
 exports[`resetUser  1`] = `
 Object {
   "type": "USER_LOGGED_OUT",

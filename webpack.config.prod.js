@@ -15,7 +15,7 @@ module.exports = () => {
     devtool: 'cheap-eval-source-map',
     output: {
       path: resolve('dist'),
-      filename: '[name].[hash].js',
+      filename: 'bundle.[hash].js',
       publicPath: '/dist/'
     },
     resolve: {
@@ -28,7 +28,7 @@ module.exports = () => {
     plugins: [
       new HtmlWebpackPlugin({
         title: 'NPI - ChangeControl',
-        template: 'index.pug'
+        template: 'index.html'
       }),
       new ProgressBarPlugin(),
       new ExtractTextPlugin('styles.[hash].css')

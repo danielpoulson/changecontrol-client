@@ -1,7 +1,6 @@
 import React from 'react';
 import TextInputTask from '../../components/Common/form-text-input';
 import SelectInput from '../../components/Common/select-input';
-import './user-style.css';
 
 type Props = {
   errors: {},
@@ -14,7 +13,7 @@ type Props = {
   user: {}
 };
 
-const UserProfileForm = ({ errors, user, deleteUser, onChange, onCancel, onSave, roleSelect, newUser }: Props) => (
+const UserProfileForm = ({ errors, user, deleteUser, onChange, onCancel, onSave, roleSelect, newUser }: Props) =>
   <div className="col-sm-12">
     <form className="form form-horizontal">
 
@@ -87,7 +86,6 @@ const UserProfileForm = ({ errors, user, deleteUser, onChange, onCancel, onSave,
         </button>
       </div>
     </form>
-  </div>
-);
+  </div>;
 
 export default UserProfileForm;

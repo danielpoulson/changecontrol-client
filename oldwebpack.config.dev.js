@@ -3,41 +3,31 @@ const { resolve } = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ProgressBarPlugin = require('progress-bar-webpack-plugin');
 
 module.exports = () => {
   return {
     context: resolve('client'),
-    entry: [
-      'react-hot-loader/patch',
-      'webpack-dev-server/client?http://localhost:8080',
-      'webpack/hot/only-dev-server',
-      './index.jsx'
-    ],
+    entry: ['webpack-hot-middleware/client?reload=true', './index.jsx'],
     devtool: 'cheap-eval-source-map',
     output: {
       path: resolve('dist'),
       filename: 'bundle.js'
     },
-
-    devServer: {
-      hot: true,
-      historyApiFallback: true,
-      quiet: true
-    },
     resolve: {
       extensions: ['.js', '.jsx', '.json']
     },
+    devServer: {
+      contentBase: './client'
+    },
     stats: {
       colors: true,
-      none: true
+      errors: true
     },
     plugins: [
       new HtmlWebpackPlugin({
         title: 'NPI - ChangeControl',
         template: 'index.html'
       }),
-      new ProgressBarPlugin(),
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NamedModulesPlugin(),
       new ExtractTextPlugin('styles.css')

@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`addUser 1`] = `
+Object {
+  "payload": Object {
+    "email": "danielpoulson@icloud.com",
+    "fullname": "Daniel Poulson",
+    "id": "588d97a89be9b78bb608692b",
+    "role": "admin",
+    "username": "danielp",
+  },
+  "type": "GET_USER",
+}
+`;
+
+exports[`setUsers 1`] = `
+Object {
+  "payload": Array [
+    "Daniel Poulson",
+    "George Saville",
+    "Keith Quiney",
+    "Matthew Johnston",
+    "Paige Finnegan",
+    "Patrick Madden",
+  ],
+  "type": "GET_USERS",
+}
+`;

@@ -1,7 +1,6 @@
 import moxios from 'moxios';
 import { serverURL } from '../../utils/helpers';
 import { addLogin, login, resetUser, setReturnedUser, setUserFromSessionState } from '../actions_main';
-import { getUsers, setUsers } from '../actions_users';
 
 const _user = {
   success: true,
@@ -13,15 +12,6 @@ const _user = {
     role: 'admin'
   }
 };
-
-const users = [
-  'Daniel Poulson',
-  'George Saville',
-  'Keith Quiney',
-  'Matthew Johnston',
-  'Paige Finnegan',
-  'Patrick Madden'
-];
 
 test('setUserFromSessionState', () => {
   expect(setUserFromSessionState()).toMatchSnapshot();
@@ -54,30 +44,6 @@ test('login', (done: Function) => {
         .then(() => {
           expect(request.url).toEqual(`${serverURL}/login`);
           expect(dispatchMock).toBeCalledWith(addLogin(_user));
-          done();
-        });
-    });
-  });
-});
-
-test('addLogin', () => {
-  expect(setUsers(users)).toMatchSnapshot();
-});
-
-test('getUsers', (done: Function) => {
-  const dispatchMock = jest.fn();
-  moxios.withMock(() => {
-    getUsers()(dispatchMock);
-    moxios.wait(() => {
-      const request = moxios.requests.mostRecent();
-      request
-        .respondWith({
-          status: 200,
-          response: users
-        })
-        .then(() => {
-          expect(request.url).toEqual(`${serverURL}/api/users/all`);
-          expect(dispatchMock).toBeCalledWith(setUsers(users));
           done();
         });
     });

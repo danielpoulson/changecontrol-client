@@ -37,8 +37,15 @@ export function searchData(data, searchText, sortColumn, columns) {
   return newList;
 }
 
+// This should be named removeById
 export function removeByIndex(data, index) {
   return data.filter(item => item._id !== index);
+}
+
+// This should be named removeByIndex
+export function removeByName(data, name) {
+  const index = data.indexOf(name);
+  return [...data.slice(0, index), ...data.slice(index + 1)];
 }
 
 export function getBySourceId(data, id) {

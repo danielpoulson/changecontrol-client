@@ -49,15 +49,23 @@ export function resetUser() {
   };
 }
 
-export function createUser(data) {
-  const url = `${serverURL}/api/users`;
-  axios.post(url, data).catch(error => {
-    console.error('axios error', error); // eslint-disable-line no-console
-  });
-
+export function addNewUser(fullname) {
   return {
     type: USER_CREATED,
-    fullname: data.fullname
+    fullname
+  };
+}
+
+export function createUser(data) {
+  return (dispatch: Function) => {
+    axios
+      .post(`${serverURL}/api/users`, data)
+      .then(() => {
+        dispatch(addNewUser(data.fullname));
+      })
+      .catch(error => {
+        console.error('axios error', error); // eslint-disable-line no-console
+      });
   };
 }
 
@@ -80,15 +88,22 @@ export function savePass(id, password) {
   };
 }
 
-export function deleteUser(data) {
-  const fullname = data;
-  const url = `${serverURL}/api/users/${data}`;
-  axios.delete(url);
-  // TODO: (3) LOW Remove server call to repopulate user after delete
-  // This action should remove the user from the state tree
-  // See user-profile ondeleteUser
+export function removeUser(fullname) {
   return {
     type: DELETED_USER,
     fullname
+  };
+}
+
+export function deleteUser(id, fullname) {
+  return (dispatch: Function) => {
+    axios
+      .delete(`${serverURL}/api/users/${id}`)
+      .then(() => {
+        dispatch(removeUser(fullname));
+      })
+      .catch(error => {
+        console.error('axios error', error); // eslint-disable-line no-console
+      });
   };
 }

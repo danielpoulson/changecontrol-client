@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`User Profile Form renders correctly 1`] = `
+<div
+  className="col-sm-12"
+>
+  <form
+    className="form form-horizontal"
+  >
+    <TextInput
+      inputdiv="col-sm-3"
+      label="Username"
+      labelstyle="col-sm-2 control-label"
+      name="username"
+      placeholder="Enter Username (Required)"
+      value="danielp"
+    />
+    <TextInput
+      inputdiv="col-sm-3"
+      label="Fullname"
+      labelstyle="col-sm-2 control-label"
+      name="fullname"
+      placeholder="Enter Users Fullname (Required)"
+      value="Daniel Poulson"
+    />
+    <TextInput
+      inputdiv="col-sm-3"
+      label="Email"
+      labelstyle="col-sm-2 control-label"
+      name="email"
+      placeholder="Enter Users email (Required)"
+      value="danielpoulson@icloud.com"
+    />
+    <SelectInput
+      defaultOption="Select Role"
+      inputdiv="col-sm-3"
+      label="Role"
+      labelstyle="col-sm-2 control-label"
+      name="role"
+      value="admin"
+    />
+    <TextInput
+      inputdiv="col-sm-3"
+      label="Password"
+      labelstyle="col-sm-2 control-label"
+      name="password"
+      placeholder="***************"
+    />
+    <div
+      className="col-sm-9 col-md-offset-2"
+    >
+      <button
+        className="btn btn-success pull-left"
+        type="submit"
+      >
+        Save
+      </button>
+      <button
+        className="btn btn-info dp-margin-10-LR"
+      >
+        Cancel
+      </button>
+      <button
+        className="btn btn-danger dp-margin-10-LR"
+      >
+        Delete
+      </button>
+    </div>
+  </form>
+</div>
+`;

@@ -1,12 +1,13 @@
 {
   "scripts": {
-    "api": "node ratingsAPI.js",
     "build": "npm-run-all delete:dist build:Prod",
     "build:Prod": "webpack -p --config webpack.config.prod.js --hide-modules",
     "dev": "webpack-dev-server",
     "delete:dist": "del ./dist",
+    "start": "npm-run-all delete:dist dev server",
     "format": "prettier --write --single-quote --print-width=120 --parser=flow --tab-width=2 \"js/**/*.{js,jsx}\"",
     "lint": "eslint **/*.{js,jsx} --quiet",
+    "server": "node server/server.js",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",

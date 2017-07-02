@@ -1,5 +1,6 @@
 import React from 'react';
 import SelectInput from '../../components/Common/select-input';
+import './user-style.css';
 
 type Props = {
   user: string,
@@ -8,7 +9,7 @@ type Props = {
   newUser: any
 };
 
-const UserSelect = ({ user, users, onChange, newUser }: Props) => (
+const UserSelect = ({ user, users, onChange, newUser }: Props) =>
   <div className="cc-user-select-fnStyle">
     <SelectInput
       name="user"
@@ -25,7 +26,6 @@ const UserSelect = ({ user, users, onChange, newUser }: Props) => (
       New User
     </button>
 
-  </div>
-);
+  </div>;
 
 export default UserSelect;

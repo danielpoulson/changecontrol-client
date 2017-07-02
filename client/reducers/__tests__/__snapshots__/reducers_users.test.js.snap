@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DELETE_USER should remove an item from the current users 1`] = `Array []`;
+
+exports[`GET_USERS should return a list of current users 1`] = `
+Array [
+  "Daniel Ricciardo",
+  "Sebastian Vettel",
+  "Lewis Hamilton",
+  "Valtteri Bottas",
+]
+`;
+
+exports[`USER_CREATED should add a new user to the userlist 1`] = `
+Array [
+  "Daniel Ricciardo",
+  "Sebastian Vettel",
+  "Lewis Hamilton",
+  "Valtteri Bottas",
+  "Michael Schumacher",
+]
+`;
