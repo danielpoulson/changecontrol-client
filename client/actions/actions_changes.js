@@ -82,15 +82,17 @@ export function loadPage(data) {
   };
 }
 
-export function createLog(data) {
-  const url = `${serverURL}/api/changes/changelog/${data.CC_No}`;
-  axios.put(url, data).catch(error => {
-    console.error('axios error', error); // eslint-disable-line no-console
-  });
-
+export function addLogComment(data) {
   return {
     type: CREATE_LOG,
     payload: data
+  };
+}
+
+export function createLog(data) {
+  const url = `${serverURL}/api/changes/changelog/${data.CC_No}`;
+  return (dispatch: Function) => {
+    axios.put(url, data).then(() => dispatch(addLogComment(data))).catch(error => console.error('axios error', error)); // eslint-disable-line no-console
   };
 }
 

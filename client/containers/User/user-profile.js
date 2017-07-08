@@ -88,7 +88,6 @@ class UserProfile extends Component {
     users: any,
     resetUser: any,
     getUser: any,
-    getUsers: any,
     createUser: any,
     saveUser: any,
     deleteUser: any,

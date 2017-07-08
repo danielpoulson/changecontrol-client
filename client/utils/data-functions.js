@@ -51,3 +51,18 @@ export function removeByName(data, name) {
 export function getBySourceId(data, id) {
   return data.filter(item => item.SourceId === id);
 }
+
+export function sortUtcDates(data, sortField, direction) {
+  function compare(a, b) {
+    if (direction === 'reverse') {
+      if (new Date(a[sortField]) > new Date(b[sortField])) return -1;
+      if (new Date(a[sortField]) < new Date(b[sortField])) return 1;
+    } else {
+      if (new Date(a[sortField]) < new Date(b[sortField])) return -1;
+      if (new Date(a[sortField]) > new Date(b[sortField])) return 1;
+    }
+    return 0;
+  }
+
+  return data.sort(compare);
+}

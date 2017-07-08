@@ -24,6 +24,7 @@ class ChangeDetail extends Component {
       change: Object.assign({}, props.change),
       changeTitle: 'Get the main title',
       ccNo: '',
+      comment: '',
       dirty: false,
       DetailTab: 'show',
       errors: [],
@@ -45,6 +46,7 @@ class ChangeDetail extends Component {
     };
 
     this.cancelChange = this.cancelChange.bind(this);
+    this.onAddComment = this.onAddComment.bind(this);
     this.onApprove = this.onApprove.bind(this);
     this.onCancel = this.onCancel.bind(this);
     this.updateChangeState = this.updateChangeState.bind(this);
@@ -77,16 +79,24 @@ class ChangeDetail extends Component {
     this.props.getChange(this.state.ccNo);
   }
 
+  onAddComment(e) {
+    e.preventDefault();
+    this.logMessage(`NOTE : ${this.state.comment}`, 5);
+    this.setState({ comment: '' });
+  }
+
+  onCommentChange = e => this.setState({ comment: e.target.value });
+
   onCancel() {
-    this.logMessage('Change Cancelled');
+    this.logMessage('Change Cancelled', 1);
   }
 
   onApprove() {
-    this.logMessage('Approved to Implement');
+    this.logMessage('Approved to Implement', 1);
   }
 
   onFinal() {
-    this.logMessage('Change Closed');
+    this.logMessage('Change Closed', 1);
   }
 
   onSelectTask = i => {
@@ -97,17 +107,17 @@ class ChangeDetail extends Component {
   newTask = () => {
     this.props.getTask('new');
   };
-  logMessage(message) {
+
+  logMessage(message, logId) {
     const _log = {
       CC_No: this.props.change.CC_No,
-      CC_Id: 1,
+      CC_Id: logId,
       CC_Action: message,
       CC_ActBy: this.props.main.user.fullname,
       CC_ActDate: new Date()
     };
 
     this.props.createLog(_log);
-    toastr.success(message);
   }
 
   cancelChange(e) {
@@ -277,7 +287,10 @@ class ChangeDetail extends Component {
 
         <ChangeLog
           logTab={this.state.LogTab}
+          comCurrent={this.state.comment}
+          onAddComment={this.onAddComment}
           onApprove={this.onApprove}
+          onCommentChange={this.onCommentChange}
           onFinal={this.onFinal}
           onCancel={this.onCancel}
           log={this.state.change}
