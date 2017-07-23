@@ -1,5 +1,5 @@
 import moxios from 'moxios';
-import { serverURL } from '../../utils/helpers';
+import config from '../../../configEnv';
 import { addLogComment, createLog } from '../actions_changes';
 
 const logComment = {
@@ -24,7 +24,7 @@ test('createLog', (done: Function) => {
           response: logComment
         })
         .then(() => {
-          expect(request.url).toEqual(`${serverURL}/api/changes/changelog/${logComment.CC_No}`);
+          expect(request.url).toEqual(`${config.serverURL}/api/changes/changelog/${logComment.CC_No}`);
           expect(dispatchMock).toBeCalledWith(addLogComment(logComment));
           done();
         });

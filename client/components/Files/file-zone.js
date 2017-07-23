@@ -3,7 +3,8 @@ import React from 'react';
 import Dropzone from 'react-dropzone';
 import toastr from 'toastr';
 import Request from 'superagent';
-import { fileRegex, serverURL } from '../../utils/helpers';
+import { fileRegex } from '../../utils/helpers';
+import config from '../../../configEnv';
 
 class FileZone extends React.Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class FileZone extends React.Component {
   onDrop(files) {
     const sourceId = this.props.sourceId;
     const addFile = this.props.addFile;
-    const req = Request.post(`${serverURL}/api/files/upload`);
+    const req = Request.post(`${config.serverURL}/api/files/upload`);
 
     files.forEach(file => {
       const myRe = fileRegex;

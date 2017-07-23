@@ -1,5 +1,5 @@
 import moxios from 'moxios';
-import { serverURL } from '../../utils/helpers';
+import config from '../../../configEnv';
 import { addLogin, login, resetUser, setReturnedUser, setUserFromSessionState } from '../actions_main';
 
 const _user = {
@@ -42,7 +42,7 @@ test('login', (done: Function) => {
           response: _user
         })
         .then(() => {
-          expect(request.url).toEqual(`${serverURL}/login`);
+          expect(request.url).toEqual(`${config.serverURL}/login`);
           expect(dispatchMock).toBeCalledWith(addLogin(_user));
           done();
         });

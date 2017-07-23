@@ -1,6 +1,6 @@
 //SYNC 11/03/2017 DP
 import axios from 'axios';
-import { serverURL } from '../utils/helpers';
+import config from '../../configEnv';
 
 export const GET_USER = 'GET_USER';
 export const GET_USERS = 'GET_USERS';
@@ -16,7 +16,7 @@ export function setUsers(users) {
 export function getUsers() {
   return (dispatch: Function) => {
     axios
-      .get(`${serverURL}/api/users/all`)
+      .get(`${config.serverURL}/api/users/all`)
       .then(response => {
         dispatch(setUsers(response.data));
       })
@@ -33,7 +33,7 @@ export function addUser(user) {
 export function getUser(id) {
   return (dispatch: Function) => {
     axios
-      .get(`${serverURL}/api/users/${id}`)
+      .get(`${config.serverURL}/api/users/${id}`)
       .then(response => {
         dispatch(addUser(response.data));
       })
@@ -59,7 +59,7 @@ export function addNewUser(fullname) {
 export function createUser(data) {
   return (dispatch: Function) => {
     axios
-      .post(`${serverURL}/api/users`, data)
+      .post(`${config.serverURL}/api/users`, data)
       .then(() => {
         dispatch(addNewUser(data.fullname));
       })
@@ -70,7 +70,7 @@ export function createUser(data) {
 }
 
 export function saveUser(data) {
-  const url = `${serverURL}/api/users/updateuser/${data.username}`;
+  const url = `${config.serverURL}/api/users/updateuser/${data.username}`;
   axios.put(url, data);
 
   return {
@@ -80,7 +80,7 @@ export function saveUser(data) {
 }
 
 export function savePass(id, password) {
-  const url = `${serverURL}/api/users/updatepass/${id}`;
+  const url = `${config.serverURL}/api/users/updatepass/${id}`;
   axios.put(url, { password });
 
   return {
@@ -98,7 +98,7 @@ export function removeUser(fullname) {
 export function deleteUser(id, fullname) {
   return (dispatch: Function) => {
     axios
-      .delete(`${serverURL}/api/users/${id}`)
+      .delete(`${config.serverURL}/api/users/${id}`)
       .then(() => {
         dispatch(removeUser(fullname));
       })

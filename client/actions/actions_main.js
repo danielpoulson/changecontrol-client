@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { serverURL } from '../utils/helpers';
+import config from '../../configEnv';
 
 export const SET_CHANGE_STATE = 'SET_CHANGE_STATE';
 export const SET_MAIN = 'SET_MAIN';
@@ -17,7 +17,7 @@ export function addUserDashboard(dashboard: any) {
 export function getUserDashboard(username) {
   return (dispatch: Function) => {
     axios
-      .get(`${serverURL}/api/changes/userdashboard/${username}`)
+      .get(`${config.serverURL}/api/changes/userdashboard/${username}`)
       .then(response => {
         dispatch(addUserDashboard(response.data));
       })
@@ -58,7 +58,7 @@ export function setReturnedUser(request: Object) {
 export function setUser() {
   return (dispatch: Function) => {
     axios
-      .get(`${serverURL}/api/users/logged`)
+      .get(`${config.serverURL}/api/users/logged`)
       .then(response => {
         dispatch(setReturnedUser(response.data));
       })
@@ -73,7 +73,7 @@ export function addLogin(user: any) {
 }
 
 export function login(username) {
-  const url = `${serverURL}/login`;
+  const url = `${config.serverURL}/login`;
   return (dispatch: Function) => {
     axios
       .post(url, username)
@@ -93,7 +93,7 @@ export function resetUser() {
 export function logoutUser() {
   return (dispatch: Function) => {
     axios
-      .get(`${serverURL}/logout`)
+      .get(`${config.serverURL}/logout`)
       .then(() => {
         dispatch(resetUser());
       })

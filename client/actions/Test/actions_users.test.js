@@ -1,5 +1,5 @@
 import moxios from 'moxios';
-import { serverURL } from '../../utils/helpers';
+import config from '../../../configEnv';
 import { addUser, addNewUser, getUser, getUsers, setUsers } from '../actions_users';
 
 const users = [
@@ -38,7 +38,7 @@ test('getUsers', (done: Function) => {
           response: users
         })
         .then(() => {
-          expect(request.url).toEqual(`${serverURL}/api/users/all`);
+          expect(request.url).toEqual(`${config.serverURL}/api/users/all`);
           expect(dispatchMock).toBeCalledWith(setUsers(users));
           done();
         });
@@ -62,7 +62,7 @@ test('getUser', (done: Function) => {
           response: userData.user
         })
         .then(() => {
-          expect(request.url).toEqual(`${serverURL}/api/users/${userData.user.id}`);
+          expect(request.url).toEqual(`${config.serverURL}/api/users/${userData.user.id}`);
           expect(dispatchMock).toBeCalledWith(addUser(userData.user));
           done();
         });

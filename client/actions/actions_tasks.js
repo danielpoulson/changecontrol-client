@@ -1,6 +1,6 @@
 //SYNC VER.002 DP
 import axios from 'axios';
-import { serverURL } from '../utils/helpers';
+import config from '../../configEnv';
 
 export const GET_TASKS = 'GET_TASKS';
 export const GET_TASK = 'GET_TASK';
@@ -13,7 +13,7 @@ export const GET_ALL_TASKS = 'GET_ALL_TASKS';
 export const SET_CAPA = 'SET_CAPA';
 
 export function getTasks(data) {
-  const url = `${serverURL}/api/tasks/${data}`;
+  const url = `${config.serverURL}/api/tasks/${data}`;
   const request = axios.get(url).catch(error => {
     console.error('axios error', error); // eslint-disable-line no-console
   });
@@ -27,7 +27,7 @@ export function getTasks(data) {
 export function getAllTasks() {
   const _status = 4;
   const _capa = 0;
-  const url = `${serverURL}/api/tasks/all/${_status}/${_capa}`;
+  const url = `${config.serverURL}/api/tasks/all/${_status}/${_capa}`;
   const request = axios.get(url).catch(error => {
     console.error('axios error', error); // eslint-disable-line no-console
   });
@@ -39,7 +39,7 @@ export function getAllTasks() {
 }
 
 export function getProjectTasks(data) {
-  const url = `${serverURL}/api/tasks/project/${data}`;
+  const url = `${config.serverURL}/api/tasks/project/${data}`;
   const request = axios.get(url).catch(error => {
     console.error('axios error', error); // eslint-disable-line no-console
   });
@@ -54,7 +54,7 @@ export function getTask(data) {
   let request = {};
 
   if (data !== 'new') {
-    const url = `${serverURL}/api/tasks/${data}`;
+    const url = `${config.serverURL}/api/tasks/${data}`;
     request = axios.get(url).catch(error => {
       console.error('axios error', error); // eslint-disable-line no-console
     });
@@ -67,7 +67,7 @@ export function getTask(data) {
 }
 
 export function addTask(data) {
-  const url = `${serverURL}/api/tasks`;
+  const url = `${config.serverURL}/api/tasks`;
   const request = axios.post(url, data).catch(error => {
     console.error('axios error', error); // eslint-disable-line no-console
   });
@@ -79,7 +79,7 @@ export function addTask(data) {
 }
 
 export function editTask(data) {
-  const url = `${serverURL}/api/tasks/${data._id}`;
+  const url = `${config.serverURL}/api/tasks/${data._id}`;
   axios.put(url, data).catch(error => {
     console.error('axios error', error); // eslint-disable-line no-console
   });
@@ -91,7 +91,7 @@ export function editTask(data) {
 }
 
 export function deleteTask(data) {
-  const url = `${serverURL}/api/tasks/${data}`;
+  const url = `${config.serverURL}/api/tasks/${data}`;
   axios.delete(url).catch(error => {
     console.error('axios error', error); // eslint-disable-line no-console
   });
@@ -110,7 +110,7 @@ export function loadPageTask(data) {
 }
 
 export function exportTasks(search) {
-  const url = `${serverURL}/api/tasks/export`;
+  const url = `${config.serverURL}/api/tasks/export`;
   const request = axios.post(url, search).catch(error => {
     console.error('axios error', error); // eslint-disable-line no-console
   });
