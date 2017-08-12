@@ -85,7 +85,7 @@ const ChangeForm = ({ errors, change, status, users, onDateChange, onChange }: P
     <DatePicker
       name="CC_TDate"
       inputdiv="col-sm-2"
-      label="Target Date"
+      label="Launch Date"
       labelstyle="col-sm-2 control-label"
       selectedDay={change.CC_TDate}
       onChange={onDateChange.bind(null, 'CC_TDate')} // eslint-disable-line react/jsx-no-bind
