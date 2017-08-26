@@ -3,9 +3,10 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Login from '../../components/Login/login';
 import NavBar from '../../layouts/Navigation/nav-bar';
+import config from '../../../configEnv';
+import './header.css';
 
 import { getUserDashboard, login } from '../../actions/actions_main';
-import './styles.css';
 
 class Header extends Component {
   constructor(props) {
@@ -38,32 +39,19 @@ class Header extends Component {
   };
 
   render() {
-    const textStyle = {
-      color: 'white'
-    };
-
-    const loginStyle = {
-      marginTop: 5
-    };
-
-    const changePassword = {
-      color: 'white',
-      paddingRight: 18
-    };
-
     return (
       <div>
-        <div className="topband">
-          <section className="col-sm-12 dp-nav-section ">
+        <div className={`top-band top-band-${config.theme}`}>
+          <section className="col-sm-12">
             <div className="col-sm-5">
-              <h3 className="topband_h1">NPI - Change Control</h3>
+              <h3 className="top-band-h3">NPI - Change Control</h3>
             </div>
-            <div className="col-sm-7" style={loginStyle}>
+            <div className="col-sm-7 login-div">
               {!this.props.fullname
                 ? <Login login={this.state.login} onChange={this.setStateLogin} onLogin={this.onLogin} />
-                : <p style={textStyle} className="pull-right">Welcome: {this.props.fullname}</p>}
+                : <p className="pull-right">Welcome: {this.props.fullname}</p>}
             </div>
-            <Link to="/user_pass" className="pull-right" style={changePassword}>
+            <Link to="/user_pass" className="pull-right change-link">
               {this.props.fullname ? 'Change Password?' : ''}
             </Link>
           </section>

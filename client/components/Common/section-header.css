@@ -1,0 +1,33 @@
+.section-header-main {
+  height: 60px;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.section-header-fmc {
+  background-color: #008C50;
+  border-bottom: 5px solid #00633F;
+}
+
+.section-header-other {
+  background-color: #FA9D28;
+  border-bottom: 5px solid #f36633;
+}
+
+.section-header-text-small {
+  font-size: 0.5em;
+}
+
+.section-header-text-main {
+  color: #ffffff;
+  font-size: 1.8em;
+}
+
+.section-header-text-sub {
+  color: #ffffff;
+  font-size: 1.2em;
+  padding-left: 10px;
+  padding-top: 5px;
+}
+
+/*---------------Header ------------------*/

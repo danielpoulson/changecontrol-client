@@ -31,7 +31,7 @@ class App extends Component {
   };
 
   render() {
-    return <Header />;
+    return <Header primary />;
   }
 }
 

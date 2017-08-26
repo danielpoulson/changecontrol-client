@@ -5,7 +5,7 @@ import Toastr from 'toastr';
 
 import ChangeList from '../../components/Changes/change-list';
 import Pagination from '../../components/Common/pagination';
-import SearchBox from '../../components/Common/search-box';
+import SectionHeader from '../../components/Common/section-header';
 
 /* actions */
 import { getChange, getChanges, addChange, loadPage, exportChanges, setChanges } from '../../actions/actions_changes';
@@ -126,13 +126,13 @@ class Changes extends Component {
     return (
       <section>
         <div className="">
-          <div className="section-header">
-            <div className="col-sm-6 pull-left">
-              <p className="section-header-text-main">Change Control - {_changeTitle} </p>
-            </div>
-
-            <SearchBox searchText={this.state.txtSearch} onChange={this.onSearchText} />
-          </div>
+          <SectionHeader
+            colSize="6"
+            headerSize="main"
+            title={`Change Control - ${_changeTitle}`}
+            searchText={this.state.txtSearch}
+            onSearchText={this.onSearchText}
+          />
         </div>
         <div className="row">
           <div className="col-sm-6">

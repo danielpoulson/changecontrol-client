@@ -1,19 +1,16 @@
 import React from 'react';
+import config from '../../../configEnv';
+import './search-box.css';
 
 type Props = {
+  hideSearch: string,
   searchText: string,
   onChange: any
 };
 
-const SearchBox = ({ searchText, onChange }: Props) => {
-  const divStyle = { paddingRight: 15 };
-  const spanStyle = {
-    background: '#71ABFF',
-    color: '#FFFFFF',
-    border: '1px solid #71ABFF'
-  };
-  return (
-    <div className="col-sm-6 pull-right input-group " style={divStyle}>
+const SearchBox = ({ hideSearch, searchText, onChange }: Props) =>
+  <div className={hideSearch}>
+    <div className="col-sm-6 pull-right input-group search-box-main">
       <input
         type="text"
         className="form-control"
@@ -21,9 +18,8 @@ const SearchBox = ({ searchText, onChange }: Props) => {
         onChange={onChange}
         placeholder="Enter Search Text"
       />
-      <span style={spanStyle} className="input-group-addon glyphicon glyphicon-search" />
+      <span className={`input-group-addon glyphicon glyphicon-search search-icon search-icon-${config.theme}`} />
     </div>
-  );
-};
+  </div>;
 
 export default SearchBox;

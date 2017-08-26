@@ -1,0 +1,17 @@
+.search-box-main {
+  padding-right: 15;
+}
+
+.search-icon {
+  color: #FFFFFF;
+}
+
+.search-icon-fmc {
+  background: #00633F;
+  border: 1px solid #00633F;
+}
+
+.search-icon-other {
+  background: #f36633;
+  border: 1px solid #f36633;
+}

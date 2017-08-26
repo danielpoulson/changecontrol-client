@@ -9,6 +9,7 @@ import TaskList from '../../components/Tasks/task-list';
 import FileList from '../../containers/Files/file-list';
 import ChangeLog from '../../components/Changes/change-log';
 import ErrorPanel from '../../components/Common/error-panel';
+import SectionHeader from '../../components/Common/section-header';
 
 import './changeDetail-style.css';
 
@@ -228,10 +229,8 @@ class ChangeDetail extends Component {
 
     return (
       <div>
-        <div className="">
-          <div className="section-header">
-            <p className="section-header-text-sub">{_title}</p>
-          </div>
+        <div>
+          <SectionHeader colSize="12" headerSize="sub" title={_title} hideSearch="hidden" />
         </div>
         <ul className="nav nav-tabs dpHand">
           <li className={detailTabClass}>

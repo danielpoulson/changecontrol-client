@@ -1,0 +1,26 @@
+.top-band {
+  height: 85px;
+}
+
+.top-band-fmc {
+  background-color: #ED1B2C;
+}
+
+.top-band-other {
+  background-color: #0A6DA0;
+}
+
+.top-band-h3 {
+  color: white;
+  font-size: 2.5em;
+}
+
+.login-div {
+  color: white;
+  margin-top: 5px;
+}
+
+.change-link {
+  color: #ffffff;
+  padding-right: 18;
+}

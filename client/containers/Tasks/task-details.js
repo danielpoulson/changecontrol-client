@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import toastr from 'toastr';
 import TaskForm from '../../components/Tasks/task-form';
 import ErrorPanel from '../../components/Common/error-panel';
+import SectionHeader from '../../components/Common/section-header';
 import { taskFormIsValid } from './task-form.validation';
 import { usersFormattedForDropdown } from '../../selectors/selectors';
 
@@ -133,10 +134,8 @@ class TaskDetail extends React.Component {
 
     return (
       <div>
-        <div className="">
-          <div className="section-header">
-            <p className="section-header-text-sub">{taskTitle}</p>
-          </div>
+        <div>
+          <SectionHeader colSize="12" headerSize="sub" title={taskTitle} hideSearch="hidden" />
         </div>
 
         <div style={formStyle}>

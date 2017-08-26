@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import TaskList from '../../components/Tasks/task-list';
 import Pagination from '../../components/Common/pagination';
-import SearchBox from '../../components/Common/search-box';
+import SectionHeader from '../../components/Common/section-header';
 /* actions */
 import { getAllTasks, loadPageTask, exportTasks } from '../../actions/actions_tasks';
 import { getFiles } from '../../actions/actions_files';
@@ -102,15 +102,13 @@ class Tasks extends Component {
     return (
       <div>
         <div className="">
-          <div className="section-header">
-            <div className="col-sm-6 pull-left">
-              <p className="section-header-text-main">
-                Active Task List
-              </p>
-            </div>
-
-            <SearchBox searchText={this.state.txtSearch} onChange={this.onSearchText} />
-          </div>
+          <SectionHeader
+            colSize="6"
+            headerSize="main"
+            title="Active Task List"
+            searchText={this.state.txtSearch}
+            onSearchText={this.onSearchText}
+          />
         </div>
 
         <div className="row">
