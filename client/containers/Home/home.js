@@ -95,8 +95,8 @@ class Home extends Component {
             <RechartBarChart />
           </div>
           <div className="col-sm-6">
-            <h3>Overdue Tasks</h3>
-            <RechartLineChart />
+            {/* <h3>Overdue Tasks</h3> */}
+            {/* <RechartLineChart /> */}
           </div>
         </div>
       </div>

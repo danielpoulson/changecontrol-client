@@ -155,6 +155,9 @@ class ChangeDetail extends Component {
     if (this.state.ccNo !== 'new') {
       _change.newOwner = _change.CC_Champ !== this.props.change.CC_Champ;
 
+      // Remove log information to stop a conflict
+      delete _change.CC_LOG;
+
       if (_change.CC_Stat >= 4) {
         // TODO: If the status is 4 or greater delete cached record
         this.props.closeChange(_change);
