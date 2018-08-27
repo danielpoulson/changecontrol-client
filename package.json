@@ -43,7 +43,6 @@
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.2.0",
     "styled-components": "^2.0.0",
-    "superagent": "^2.2.0",
     "toastr": "^2.1.2"
   },
   "devDependencies": {
